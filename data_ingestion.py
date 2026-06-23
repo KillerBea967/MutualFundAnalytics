@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 
-path = "data/raw"
+path = "./data/raw"
 
 csv_files = [f for f in os.listdir(path) if f.endswith(".csv")]
 
@@ -19,6 +19,3 @@ for file in csv_files:
 
     print("\nFirst 5 Rows:")
     print(df.head())
-
-    print("\nMissing values:")
-    print(df.isnull().sum())

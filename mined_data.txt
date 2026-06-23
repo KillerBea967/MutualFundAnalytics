@@ -1,0 +1,44 @@
+UNIQUE FUND HOUSES
+SBI Mutual Fund
+HDFC Mutual Fund
+ICICI Prudential MF
+Nippon India MF
+Kotak Mahindra MF
+Axis Mutual Fund
+Aditya Birla Sun Life MF
+UTI Mutual Fund
+Mirae Asset MF
+DSP Mutual Fund
+
+UNIQUE CATEGORIES
+Equity
+Debt
+
+UNIQUE SUB-CATEGORIES
+Large Cap
+Small Cap
+Gilt
+Mid Cap
+Short Duration
+Value
+Liquid
+Index/ETF
+Flexi Cap
+Index
+Large & Mid Cap
+ELSS
+
+UNIQUE RISK CATEGORIES
+Moderate
+Very High
+Low
+High
+Moderately High
+
+AMFI CODE VALIDATION
+Total codes in fund_master : 38
+Total codes in nav_history : 40
+Missing codes : 0
+
+All AMFI codes in fund_master are present in nav_history.
+
