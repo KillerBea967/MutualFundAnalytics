@@ -1,0 +1,157 @@
+DAY 1: DATA INGESTION SUMMARY
+
+FILE: Axis_Bluechip.csv
+
+Shape:
+(3581, 2)
+
+Data Types:
+date        str
+nav     float64
+dtype: object
+
+First 5 Rows:
+         date        nav
+0  23-06-2026  6200.8511
+1  22-06-2026  6199.4871
+2  19-06-2026  6195.7815
+3  18-06-2026  6194.6520
+4  17-06-2026  6193.3504
+
+FILE: ICICI_Bluechip.csv
+
+Shape:
+(3323, 2)
+
+Data Types:
+date        str
+nav     float64
+dtype: object
+
+First 5 Rows:
+         date       nav
+0  23-06-2026  107.5421
+1  22-06-2026  108.4681
+2  19-06-2026  107.9636
+3  18-06-2026  108.0081
+4  17-06-2026  107.5348
+
+FILE: Kotak_Bluechip.csv
+
+Shape:
+(3317, 2)
+
+Data Types:
+date        str
+nav     float64
+dtype: object
+
+First 5 Rows:
+         date       nav
+0  23-06-2026  249.9814
+1  22-06-2026  252.0694
+2  19-06-2026  251.5713
+3  18-06-2026  249.1553
+4  17-06-2026  246.3925
+
+FILE: Nippon_LargeCap.csv
+
+Shape:
+(3314, 2)
+
+Data Types:
+date        str
+nav     float64
+dtype: object
+
+First 5 Rows:
+         date       nav
+0  23-06-2026  100.4605
+1  22-06-2026  101.3654
+2  19-06-2026  100.7824
+3  18-06-2026  100.9901
+4  17-06-2026  100.6040
+
+FILE: SBI_Bluechip.csv
+
+Shape:
+(3252, 2)
+
+Data Types:
+date        str
+nav     float64
+dtype: object
+
+First 5 Rows:
+         date       nav
+0  23-06-2026  106.0410
+1  22-06-2026  105.9850
+2  19-06-2026  105.9219
+3  18-06-2026  105.9003
+4  17-06-2026  105.8482
+
+FILE: SBI_Mutual_Fund.csv
+
+Shape:
+(3107, 2)
+
+Data Types:
+date        str
+nav     float64
+dtype: object
+
+First 5 Rows:
+         date       nav
+0  23-06-2026  203.5443
+1  22-06-2026  204.1263
+2  19-06-2026  202.0761
+3  18-06-2026  200.9565
+4  17-06-2026  199.8302
+
+FUND MASTER EXPLORATION
+UNIQUE FUND HOUSES
+SBI Mutual Fund
+HDFC Mutual Fund
+ICICI Prudential MF
+Nippon India MF
+Kotak Mahindra MF
+Axis Mutual Fund
+Aditya Birla Sun Life MF
+UTI Mutual Fund
+Mirae Asset MF
+DSP Mutual Fund
+
+UNIQUE CATEGORIES
+Equity
+Debt
+
+UNIQUE SUB-CATEGORIES
+Large Cap
+Small Cap
+Gilt
+Mid Cap
+Short Duration
+Value
+Liquid
+Index/ETF
+Flexi Cap
+Index
+Large & Mid Cap
+ELSS
+
+UNIQUE RISK CATEGORIES
+Moderate
+Very High
+Low
+High
+Moderately High
+AMFI CODE VALIDATION
+Total codes in fund_master : 38
+Total codes in nav_history : 40
+Missing codes : 0
+
+All AMFI codes in fund_master are present in nav_history.
+DAY 1 Work Summary
+- Successfully loaded all datasets.
+- Explored fund houses, categories, sub-categories and risk categories.
+- AMFI codes uniquely identify mutual fund schemes.

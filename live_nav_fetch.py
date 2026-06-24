@@ -1,6 +1,6 @@
 import requests
 import pandas as pd
-from data_fetch import data_fetch
+from functions import data_fetch
 
 schemes = {
     "SBI_Mutual_Fund":125497,

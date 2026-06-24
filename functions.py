@@ -6,4 +6,4 @@ def data_fetch(code,fund_name):
     response = requests.get(url)
     data = response.json()
     nav_df = pd.DataFrame(data["data"])
-    nav_df.to_csv(f"data/raw/{fund_name}.csv", index=False)
+    nav_df.to_csv(f"data/raw/doc/{fund_name}.csv", index=False)
