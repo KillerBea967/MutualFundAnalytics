@@ -1,0 +1,34 @@
+DAY 2 OUTCOMES
+
+ROW COUNT VERIFICATION
+dim_fund : CSV = 38 | SQL = 38
+fact_nav : CSV = 46000 | SQL = 46000
+fact_transactions : CSV = 32778 | SQL = 32778
+fact_performance : CSV = 40 | SQL = 40
+fact_aum : CSV = 90 | SQL = 90
+
+TABLE KEYS
+dim_fund
+Primary Key : amfi_code
+
+fact_nav
+Primary Key : nav_id
+Foreign Key : amfi_code -> dim_fund(amfi_code)
+
+fact_transactions
+Primary Key : transaction_id
+Foreign Key : amfi_code -> dim_fund(amfi_code)
+
+fact_performance
+Primary Key : performance_id
+Foreign Key : amfi_code -> dim_fund(amfi_code)
+
+fact_aum
+Primary Key : aum_id
+
+DATA VALIDATION RESULTS
+------------------------------------------------------------
+Invalid KYC rows in Transactions : 32778
+Rows with invalid returns in Performance : 0
+Rows with invalid expense ratio in Performance : 0
+

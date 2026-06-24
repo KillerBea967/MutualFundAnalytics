@@ -9,7 +9,7 @@ fund_master = pd.read_csv("./data/raw/fund_master.csv")
 nav_history = pd.read_csv("./data/raw/nav_history.csv")
 
 # Open a single output file
-with open("day1_outcomes.txt", "w", encoding="utf-8") as output_file:
+with open("reports/day1_outcomes.txt", "w", encoding="utf-8") as output_file:
 
     output_file.write("DAY 1: DATA INGESTION SUMMARY\n\n")
 

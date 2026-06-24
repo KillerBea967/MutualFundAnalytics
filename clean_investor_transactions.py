@@ -32,15 +32,6 @@ investor_transactions["kyc_status"] = (
     .str.capitalize()
 )
 
-valid_kyc = [
-    "Verified",
-    "Pending"
-]
-
-invalid_kyc = investor_transactions[
-    investor_transactions["kyc_status"].isin(valid_kyc)
-]
-
 investor_transactions = (
     investor_transactions.drop_duplicates()
 )
