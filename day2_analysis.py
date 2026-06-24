@@ -97,5 +97,134 @@ with open("reports/day2_outcomes.txt", "w", encoding="utf-8") as f:
         f"Rows with invalid expense ratio in Performance : {len(invalid_expense_ratio)}\n\n"
     )
 
+    f.write("\nANALYTICAL SQL QUERIES AND RESULTS\n")
+    f.write("-" * 60 + "\n")
+
+    queries = {
+
+        "1. Top 5 Funds by 5-Year Return":
+        """
+        SELECT
+            df.scheme_name,
+            fp.return_5yr_pct
+        FROM fact_performance fp
+        JOIN dim_fund df
+        ON fp.amfi_code = df.amfi_code
+        ORDER BY fp.return_5yr_pct DESC
+        LIMIT 5
+        """,
+
+        "2. Average NAV per Month":
+        """
+        SELECT
+            strftime('%Y-%m', date) AS month,
+            ROUND(AVG(nav),2) AS avg_nav
+        FROM fact_nav
+        GROUP BY month
+        ORDER BY month
+        """,
+
+        "3. SIP Year-wise Growth":
+        """
+        SELECT
+            strftime('%Y', transaction_date) AS year,
+            ROUND(SUM(amount_inr),2) AS total_sip_amount
+        FROM fact_transactions
+        WHERE transaction_type = 'SIP'
+        GROUP BY year
+        ORDER BY year
+        """,
+
+        "4. Transactions by State":
+        """
+        SELECT
+            state,
+            COUNT(*) AS total_transactions
+        FROM fact_transactions
+        GROUP BY state
+        ORDER BY total_transactions DESC
+        """,
+
+        "5. Funds with Expense Ratio < 1%":
+        """
+        SELECT
+            df.scheme_name,
+            fp.expense_ratio_pct
+        FROM fact_performance fp
+        JOIN dim_fund df
+        ON fp.amfi_code = df.amfi_code
+        WHERE fp.expense_ratio_pct < 1
+        ORDER BY fp.expense_ratio_pct
+        """,
+
+        "6. Top 10 Funds by 3-Year Return":
+        """
+        SELECT
+            df.scheme_name,
+            fp.return_3yr_pct
+        FROM fact_performance fp
+        JOIN dim_fund df
+        ON fp.amfi_code = df.amfi_code
+        ORDER BY fp.return_3yr_pct DESC
+        LIMIT 10
+        """,
+
+        "7. Top 10 Funds by Sharpe Ratio":
+        """
+        SELECT
+            df.scheme_name,
+            fp.sharpe_ratio
+        FROM fact_performance fp
+        JOIN dim_fund df
+        ON fp.amfi_code = df.amfi_code
+        ORDER BY fp.sharpe_ratio DESC
+        LIMIT 10
+        """,
+
+        "8. Total Investment by Gender":
+        """
+        SELECT
+            gender,
+            ROUND(SUM(amount_inr),2)
+        FROM fact_transactions
+        GROUP BY gender
+        """,
+
+        "9. Transaction Count by Payment Mode":
+        """
+        SELECT
+            payment_mode,
+            COUNT(*)
+        FROM fact_transactions
+        GROUP BY payment_mode
+        ORDER BY COUNT(*) DESC
+        """,
+
+        "10. Average 5-Year Return by Category":
+        """
+        SELECT
+            df.category,
+            ROUND(AVG(fp.return_5yr_pct),2)
+        FROM fact_performance fp
+        JOIN dim_fund df
+        ON fp.amfi_code = df.amfi_code
+        GROUP BY df.category
+        ORDER BY AVG(fp.return_5yr_pct) DESC
+        """
+    }
+
+    for title, query in queries.items():
+
+        f.write(f"\n{title}\n")
+        f.write("-" * len(title) + "\n")
+
+        cursor.execute(query)
+        results = cursor.fetchall()
+
+        for row in results:
+            f.write(str(row) + "\n")
+
+        f.write("\n")
+
 conn.close()
 print("Day 2 outcomes saved successfully to day2_outcomes.txt")
