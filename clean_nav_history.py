@@ -23,3 +23,5 @@ nav_history = nav_history[
 ]
 
 nav_history.to_csv("data/processed/nav_history_cleaned.csv",index=False)
+
+print("File Created Successfully")

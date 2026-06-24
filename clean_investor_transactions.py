@@ -3,7 +3,8 @@ import pandas as pd
 investor_transactions = pd.read_csv("data/raw/investor_transactions.csv")
 
 investor_transactions["transaction_date"] = pd.to_datetime(
-    investor_transactions["transaction_date"]
+    investor_transactions["transaction_date"],
+    format="%d-%m-%Y"
 )
 
 investor_transactions["transaction_type"] = (
@@ -48,3 +49,5 @@ investor_transactions.to_csv(
     "data/processed/investor_transactions_cleaned.csv",
     index=False
 )
+
+print("File Created Successfully")
