@@ -37,3 +37,5 @@ amfi_code,fund_house,scheme_name,category,sub_category,plan,launch_date,benchmar
 148568,Mirae Asset MF,Mirae Asset Emerging Bluechip Fund - Regular - Growth,Equity,Large & Mid Cap,Regular,2010-07-09,NIFTY Large Midcap 250 TRI,1.52,1.0,500,1000,Neelesh Surana,Moderately High,EC04
 148569,Mirae Asset MF,Mirae Asset Tax Saver Fund - Regular - Growth,Equity,ELSS,Regular,2015-12-28,NIFTY 500 TRI,1.6,1.0,500,1000,Neelesh Surana,High,EC05
 149322,DSP Mutual Fund,DSP Top 100 Equity Fund - Regular - Growth,Equity,Large Cap,Regular,2003-03-10,NIFTY 100 TRI,1.54,1.0,500,1000,Apoorva Shah,Moderate,EC01
+149323,DSP Mutual Fund,DSP Midcap Fund - Regular - Growth,Equity,Mid Cap,Regular,2006-11-16,NIFTY Midcap 150 TRI,1.61,1.0,500,1000,Vinit Sambre,High,EC02
+149324,DSP Mutual Fund,DSP Small Cap Fund - Regular - Growth,Equity,Small Cap,Regular,2007-06-14,BSE 250 SmallCap TRI,1.52,1.0,500,1000,Vinit Sambre,Very High,EC03
