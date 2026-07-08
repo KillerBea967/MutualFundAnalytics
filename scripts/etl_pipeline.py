@@ -18,22 +18,31 @@ with open(sql_folder / "schema.sql", "r") as file:
     schema = file.read()
 
 with engine.begin() as conn:
-    conn.execute(text(schema))
 
-fund_master = pd.read_csv(processed_folder / "fund_master_clean.csv")
+    statements = schema.split(";")
 
-nav_history = pd.read_csv(processed_folder / "nav_history_clean.csv")
+    for statement in statements:
+
+        statement = statement.strip()
+
+        if statement:
+
+            conn.execute(text(statement))
+
+fund_master = pd.read_csv(processed_folder / "fund_master_cleaned.csv")
+
+nav_history = pd.read_csv(processed_folder / "nav_history_cleaned.csv")
 
 transactions = pd.read_csv(
-    processed_folder / "investor_transactions_clean.csv"
+    processed_folder / "investor_transactions_cleaned.csv"
 )
 
 performance = pd.read_csv(
-    processed_folder / "scheme_performance_clean.csv"
+    processed_folder / "scheme_performance_cleaned.csv"
 )
 
 aum = pd.read_csv(
-    processed_folder / "aum_by_fund_house_clean.csv"
+    processed_folder / "aum_by_fund_house_cleaned.csv"
 )
 
 nav_history["date"] = pd.to_datetime(nav_history["date"])

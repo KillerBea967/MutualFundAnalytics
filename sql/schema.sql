@@ -1,4 +1,4 @@
-CREATE TABLE dim_fund (
+CREATE TABLE IF NOT EXISTS dim_fund (
     amfi_code INTEGER PRIMARY KEY,
     scheme_name TEXT NOT NULL,
     fund_house TEXT NOT NULL,
@@ -9,7 +9,7 @@ CREATE TABLE dim_fund (
     risk_category TEXT
 );
 
-CREATE TABLE dim_date (
+CREATE TABLE IF NOT EXISTS dim_date (
     date_id INTEGER PRIMARY KEY,
     date DATE NOT NULL UNIQUE,
     year INTEGER NOT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE dim_date (
     is_weekend INTEGER
 );
 
-CREATE TABLE fact_nav (
+CREATE TABLE IF NOT EXISTS fact_nav (
     nav_id INTEGER PRIMARY KEY AUTOINCREMENT,
     amfi_code INTEGER NOT NULL,
     date_id INTEGER NOT NULL,
@@ -34,7 +34,7 @@ CREATE TABLE fact_nav (
         REFERENCES dim_date(date_id)
 );
 
-CREATE TABLE fact_transactions (
+CREATE TABLE IF NOT EXISTS fact_transactions (
     transaction_id INTEGER PRIMARY KEY AUTOINCREMENT,
     investor_id INTEGER NOT NULL,
     date_id INTEGER NOT NULL,
@@ -62,7 +62,7 @@ CREATE TABLE fact_transactions (
 );
 
 
-CREATE TABLE fact_performance (
+CREATE TABLE IF NOT EXISTS fact_performance (
     performance_id INTEGER PRIMARY KEY AUTOINCREMENT,
 
     amfi_code INTEGER NOT NULL,
@@ -88,7 +88,7 @@ CREATE TABLE fact_performance (
         REFERENCES dim_fund(amfi_code)
 );
 
-CREATE TABLE fact_aum (
+CREATE TABLE IF NOT EXISTS fact_aum (
     aum_id INTEGER PRIMARY KEY AUTOINCREMENT,
 
     date_id INTEGER NOT NULL,

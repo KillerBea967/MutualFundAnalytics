@@ -243,37 +243,3 @@ def fund_scorecard(
         "Score",
         ascending=False
     )
-
-import plotly.graph_objects as go
-
-def plotss(fund_nav, top5_funds):
-    df = fund_nav.copy()
-    df["date"] = pd.to_datetime(df["date"])
-    df = df[df["amfi_code"].isin(top5_funds)]
-    df = df.sort_values(["amfi_code", "date"])
-
-    fig = go.Figure()
-
-    for fund, group in df.groupby("amfi_code"):
-
-        fig.add_trace(
-            go.Scatter(
-                x=group["date"],
-                y=group["nav"],
-                mode="lines",
-                name=f"Fund {fund}"
-            )
-        )
-
-    fig.update_layout(
-        title="Top 5 Mutual Funds NAV Trend (Last 3 Years)",
-        xaxis_title="Date",
-        yaxis_title="NAV (₹)",
-        template="plotly_white",
-        hovermode="x unified",
-        height=650,
-        width=1100,
-        legend_title="AMFI Code"
-    )
-
-    fig.show()
