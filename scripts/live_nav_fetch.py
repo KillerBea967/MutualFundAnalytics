@@ -1,12 +1,16 @@
 import requests
 import pandas as pd
+from pathlib import Path
+
+scripts_folder = Path.cwd()
+main_folder = scripts_folder.parent / "data" / "raw"
 
 def data_fetch(code,fund_name):
     url = f"https://api.mfapi.in/mf/{code}"
     response = requests.get(url)
     data = response.json()
     nav_df = pd.DataFrame(data["data"])
-    nav_df.to_csv(f"data/raw/doc/{fund_name}.csv", index=False)
+    nav_df.to_csv(main_folder / "extracted_data" / f"{fund_name}.csv", index=False)
 
 schemes = {
     "SBI_Mutual_Fund":125497,
