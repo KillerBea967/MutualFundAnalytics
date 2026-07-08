@@ -36,6 +36,9 @@ def plot_return_distribution(nav_df):
 
     plt.show()
 
+import pandas as pd
+import numpy as np
+
 def compute_cagr(nav_df):
 
     nav = nav_df.copy()
@@ -48,22 +51,31 @@ def compute_cagr(nav_df):
 
         group = group.sort_values("date")
 
-        start = group.iloc[0]["nav"]
+        start_nav = group.iloc[0]["nav"]
+        end_nav = group.iloc[-1]["nav"]
 
-        end = group.iloc[-1]["nav"]
+        # Number of trading periods
+        trading_days = len(group) - 1
 
-        years = (
-            group["date"].max() -
-            group["date"].min()
-        ).days / 365.25
+        if trading_days <= 0:
+            continue
 
-        cagr = (end/start)**(1/years)-1
+        cagr = (
+            (end_nav / start_nav)
+            ** (252 / trading_days)
+        ) - 1
 
         results.append({
 
-            "amfi_code":fund,
+            "amfi_code": fund,
 
-            "CAGR":cagr
+            "Start_NAV": start_nav,
+
+            "End_NAV": end_nav,
+
+            "Trading_Days": trading_days,
+
+            "CAGR": cagr
 
         })
 
